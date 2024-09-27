@@ -3,7 +3,11 @@ package org.example;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class Crawler {
@@ -19,7 +23,7 @@ public class Crawler {
     public void execute(){
         webDriver.get("https://www.google.com");
         enterSearchTerm("What is the meaning of Life");
-        wait5seconds();
+        waitUnitlVisible();
         printAutoCompleteResult();
         webDriver.quit();
 
@@ -40,12 +44,9 @@ public class Crawler {
 
     }
 
-    private void wait5seconds() {
-        try{
-            Thread.sleep(5000);
-        }catch (Exception e){
-
-        }
+    private void waitUnitlVisible() {
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AUTO_COMPLETE_LIST_ELEMENT));
     }
 
     private void enterSearchTerm(String word) {
