@@ -19,9 +19,9 @@ public class Crawler {
     public void execute(){
         webDriver.get("https://www.google.com");
         enterSearchTerm("What is the meaning of Life");
-       // wait5seconds();
+        wait5seconds();
         printAutoCompleteResult();
-        //webDriver.quit();
+        webDriver.quit();
 
     }
 
