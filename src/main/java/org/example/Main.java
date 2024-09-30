@@ -14,6 +14,6 @@ public class Main {
         options.addArguments("--incognito");
 
         WebDriver driver = new ChromeDriver(options);
-        new Crawler(driver).execute();
+
     }
 }
